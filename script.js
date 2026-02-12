@@ -6,10 +6,13 @@ let gameActive = false;
 
 document.getElementById("submit").addEventListener("click", function () {
 
-    player1 = document.getElementById("player1").value;
-    player2 = document.getElementById("player2").value;
+    player1 = document.getElementById("player-1").value;
+    player2 = document.getElementById("player-2").value;
 
     if (player1 === "" || player2 === "") return;
+
+    document.querySelector(".input-section").style.display = "none";
+    document.querySelector(".game-section").style.display = "block";
 
     currentPlayer = player1;
     currentSymbol = "x";
@@ -36,7 +39,6 @@ cells.forEach(cell => {
             return;
         }
 
-        // Switch Player
         if (currentSymbol === "x") {
             currentSymbol = "o";
             currentPlayer = player2;
@@ -53,7 +55,7 @@ cells.forEach(cell => {
 
 function checkWinner() {
 
-    let winPatterns = [
+    let patterns = [
         ["1","2","3"],
         ["4","5","6"],
         ["7","8","9"],
@@ -64,7 +66,7 @@ function checkWinner() {
         ["3","5","7"]
     ];
 
-    for (let pattern of winPatterns) {
+    for (let pattern of patterns) {
 
         let a = document.getElementById(pattern[0]).innerText;
         let b = document.getElementById(pattern[1]).innerText;
