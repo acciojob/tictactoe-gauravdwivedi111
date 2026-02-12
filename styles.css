@@ -1,1 +1,27 @@
 /*  your css code here. If applicable */
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.board {
+    width: 300px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+}
+
+.cell {
+    border: 1px solid black;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.message {
+    margin: 15px;
+    font-size: 20px;
+}
