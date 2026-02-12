@@ -1,29 +1,28 @@
-//your JS code here. If required.
 let player1 = "";
 let player2 = "";
 let currentPlayer = "";
-let currentSymbol = "X";
-let gameActive = true;
+let currentSymbol = "x";
+let gameActive = false;
 
 document.getElementById("submit").addEventListener("click", function () {
 
-    player1 = document.getElementById("player-1").value;
-    player2 = document.getElementById("player-2").value;
+    player1 = document.getElementById("player1").value;
+    player2 = document.getElementById("player2").value;
 
-    if (player1 === "" || player2 === "") {
-        alert("Please enter both player names");
-        return;
-    }
-	document.getElementById("player-form").style.display = "none";
-    document.getElementById("game").style.display = "block";
+    if (player1 === "" || player2 === "") return;
 
     currentPlayer = player1;
-    document.querySelector(".message").innerText = `${currentPlayer}, you're up`;
+    currentSymbol = "x";
+    gameActive = true;
+
+    document.querySelector(".message").innerText =
+        `${currentPlayer}, you're up`;
 });
 
 let cells = document.querySelectorAll(".cell");
 
 cells.forEach(cell => {
+
     cell.addEventListener("click", function () {
 
         if (!gameActive || cell.innerText !== "") return;
@@ -38,17 +37,18 @@ cells.forEach(cell => {
         }
 
         // Switch Player
-        if (currentSymbol === "X") {
-            currentSymbol = "O";
+        if (currentSymbol === "x") {
+            currentSymbol = "o";
             currentPlayer = player2;
         } else {
-            currentSymbol = "X";
+            currentSymbol = "x";
             currentPlayer = player1;
         }
 
         document.querySelector(".message").innerText =
             `${currentPlayer}, you're up`;
     });
+
 });
 
 function checkWinner() {
